@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruitMe - Job Application</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet">
+
+
+    <style>
+        /* Additional custom styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .apply-form {
+            /*width: 600px;*/
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 10px 25px;
+            animation: fadeInUp 1s;
+        }
+
+        .apply-form h1 {
+            color:  #1c2c4b;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .apply-form .form-group h6 {
+            color:  #1c2c4b;
+            margin-bottom: 0;
+        }
+
+        .apply-form .form-control {
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .apply-form .form-control:focus {
+            border-color:  #1c2c4b;
+            box-shadow: none;
+        }
+
+        .apply-form .small {
+            color: #888;
+        }
+
+        .apply-form .btn-primary {
+            background-color:  #1c2c4b;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-form .btn-primary:hover {
+            background-color: #1a56a4;
+        }
+
+        .slider-container {
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+        /*.hero {*/
+        /*    text-align: center;*/
+        /*    color: #fff;*/
+        /*    padding: 100px 0;*/
+        /*    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),*/
+        /*    url('/img/hero-img.png') center/cover no-repeat;*/
+        /*}*/
+
+        /*.hero h1 {*/
+        /*    font-size: 48px;*/
+        /*    margin-bottom: 20px;*/
+        /*}*/
+
+        /*.hero p {*/
+        /*    font-size: 20px;*/
+        /*    margin-bottom: 40px;*/
+        /*}*/
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a th:href="@{/}">ReM</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a th:href="@{/}" class="logo me-auto"><img src="/img/logo.png" alt="" class="img-fluid"></a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" th:href="@{/#hero}">Home</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/#about}">About</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/#services}">Jobs</a></li>
+                <li><a class="nav-link scrollto" th:href="@{/#contact}">Contact</a></li>
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+</header>
+
+<br><br><br>
+<!--<section class="hero">-->
+<!--    <div class="container">-->
+<!--        <h1>Welcome to RecruitMe</h1>-->
+<!--        <p>We help you find the perfect job and advance your career.</p>-->
+<!--        &lt;!&ndash; <a href="#" class="btn-primary">Log In</a> &ndash;&gt;-->
+<!--    </div>-->
+<!--</section>-->
+<div class="slider-container">
+    <form id="applicationForm" th:action="@{/employee/registration}" method="post" enctype="multipart/form-data">
+    <div class="slide active">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="apply-form">
+                        <h1 class="text-center mb-4">Personal Information</h1>
+<br>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <h6>Name</h6>
+                                    <input type="text" class="form-control" name="name"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <h6>Email</h6>
+                                    <input type="email" class="form-control" name="email" placeholder="example@example.com" />
+                                </div>
+
+                            </div>
+                        <div class="form-row">
+                                <input type="hidden" name="department">
+                                <div class="form-group col-md-6">
+                                    <h6>Number</h6>
+                                    <input type="text" class="form-control" name="number" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <h6>Gender</h6>
+                                    <select class="form-control" name="gender">
+                                        <option>Choose an option</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <h6>Are you a Student</h6>
+                                    <select class="form-control" name="student">
+                                        <option>Choose an option</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <h6>Language Frequently Used</h6>
+                                    <select class="form-control" name="language">
+                                        <option>Choose an option</option>
+                                        <option>English</option>
+                                        <option>French</option>
+                                        <option>Swahili</option>
+                                    </select>
+                                </div>
+                            </div>
+<!--                        <div class="form-row">-->
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary next-slide">Next</button>
+                                <br><br>
+                            </div>
+<!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="apply-form">
+                        <h1 class="text-center mb-4">Interest</h1>
+<!--                        <form th:action="@{/employee/registration}" method="post" enctype="multipart/form-data">-->
+                            <!-- Interest Fields -->
+                            <div class="form-group">
+                                <h6>Select your interests:</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Art" id="interestArt"  name="interest">
+                                    <label class="form-check-label" for="interestArt">Art</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Technology" id="interestTech"  name="interest">
+                                    <label class="form-check-label" for="interestTech">Technology</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Sports" id="interestSports"  name="interest">
+                                    <label class="form-check-label" for="interestSports">Sports</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Music" id="interestMusic"  name="interest">
+                                    <label class="form-check-label" for="interestMusic">Music</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Cooking" id="interestCooking"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Cooking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Photography" id="interestPhotography"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Photography</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Dancing" id="interestDancing"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Dancing</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Gardening" id="interestGardening"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Gardening</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Fashion" id="interestFashion"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Fashion</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Fitness" id="interestFitness"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Fitness</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Movies" id="interestMovies"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Movies</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Writing" id="interestWriting"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Writing</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Others" id="interestOthers"  name="interest">
+                                    <label class="form-check-label" for="interestCooking">Others </label>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary prev-slide">Previous</button>
+                                <button type="button" class="btn btn-primary next-slide">Next</button>
+                            </div>
+<!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Skills & Work -->
+    <div class="slide">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="apply-form">
+                        <h1 class="text-center mb-4">Skills & Work</h1>
+<!--                        <form th:action="@{/employee/registration}" method="post" enctype="multipart/form-data">-->
+                            <!-- Skills and Work Fields -->
+                            <div class="form-group">
+                                <h6>Skills</h6>
+                                <textarea class="form-control" rows="3" name="skills"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <h6>Resume</h6>
+                                <textarea class="form-control" rows="3" name="work"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                 <h6>CV File</h6>
+                                <div class="custom-file">
+                                    <input type="file" name="CVFile" class="custom-file-input" id="customFile" onchange="updateFileNameLabel(this)">
+                                    <label class="custom-file-label" for="customFile" id="fileInputLabel">Choose file</label>
+                                </div>
+                                <div class="small mt-2">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary prev-slide">Previous</button>
+                                <button type="submit" class="btn btn-primary">Send Application</button>
+                            </div>
+<!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+<!-- Vendor JS Files -->
+<!-- Your vendor JS script tags -->
+
+<!-- Template Main JS File -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function updateFileNameLabel(input) {
+        const label = document.getElementById("fileInputLabel");
+        if (input.files.length > 0) {
+            label.innerText = input.files[0].name;
+        } else {
+            label.innerText = "Choose file";
+        }
+    }
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        const nextButtons = document.querySelectorAll(".next-slide");
+        const prevButtons = document.querySelectorAll(".prev-slide");
+        const form = document.getElementById("applicationForm");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function showNextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function showPrevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function collectFormData() {
+            const formData = new FormData();
+            const inputs = slides[currentSlide].querySelectorAll("input, select, textarea");
+
+            inputs.forEach(input => {
+                formData.append(input.name, input.value);
+            });
+
+            return formData;
+        }
+
+        nextButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const formData = collectFormData();
+                fetch(form.getAttribute("action"), {
+                    method: form.getAttribute("method"),
+                    body: formData
+                }).then(response => {
+                    // Handle response if needed
+                    showNextSlide();
+                }).catch(error => {
+                    // Handle error if needed
+                });
+            });
+        });
+
+        prevButtons.forEach(button => {
+            button.addEventListener("click", showPrevSlide);
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the department value from the URL query parameter
+        const params = new URLSearchParams(window.location.search);
+        const department = params.get("department");
+
+        // Set the department value to the hidden input field
+        document.querySelector("input[name='department']").value = department;
+    });
+</script>
+
+<footer id="footer">
+
+    <div class="footer-newsletter">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h4>Join Our Newsletter</h4>
+                    <p> Your success is our priority, and we're ready to assist you.</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input type="submit" value="Adjust">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>RECRUITME</h3>
+                    <p>
+                        KBC Building, 3rd Floor Block <br>
+                        D. KN 5 RD, 7411 Kigali, <br>
+                        Rwanda <br><br>
+                        <strong>Phone:</strong> 4747<br>
+                        <strong>Email:</strong> help@gmail.com<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Social Networks</h4>
+                    <p>We're eager to hear from you—get in touch today!</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+        <div class="copyright">
+            &copy; Copyright <strong><span>RECRUITME</span></strong>. All Rights Reserved 2023
+        </div>
+    </div>
+    </div> -->
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+
+</body>
+
+</html>
+
+

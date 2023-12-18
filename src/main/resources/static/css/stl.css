@@ -1,0 +1,74 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+
+a {
+  color: #47b2e4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #73c5eb;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif;
+}
+
+#login {
+  width: 350px;
+  margin: 100px auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+                  /*url('/img/it.jpeg') center/cover no-repeat;*/
+  border-radius: 10px;
+  padding: 30px;
+}
+
+#login h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+#login form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#login input[type="submit"] {
+  background: #47b2e4;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+#login input[type="submit"]:hover {
+  background: #209dd8;
+}
+
+#signup {
+  width: 350px;
+  margin: 100px auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+                  /*url('assets/img/it.jpeg') center/cover no-repeat;*/
+  border-radius: 10px;
+  padding: 30px;
+}

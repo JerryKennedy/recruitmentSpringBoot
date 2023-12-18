@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create User with Role</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role Name</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.roles[0].name}"></td>
+        <td>
+            <a th:href="@{/admin/editUser/{id}(id=${user.id})}">Edit</a> |
+            <a th:href="@{/admin/deleteUser/{id}(id=${user.id})}" class="delete-link">Delete</a>
+        </td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>
