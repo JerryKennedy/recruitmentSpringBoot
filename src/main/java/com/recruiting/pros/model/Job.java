@@ -24,17 +24,17 @@ public class Job {
     private LocalDate deadline;
     @Column
     private LocalTime isaha;
-    @Column(columnDefinition = "LONGTEXT")
+    @Column
     private String description;
-    @Column(columnDefinition = "LONGTEXT")
+    @Column
     private String benefits;
     @Column
     private String title;
-    @Column(columnDefinition = "LONGTEXT")
+    @Column
     private String requirement;
     @Column
     private String position;
-    @Column(columnDefinition = "LONGTEXT")
+    @Column
     private String instruction;
     @Column
     private String department;

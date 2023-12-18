@@ -40,7 +40,7 @@ public class Employee {
     @Transient
     private MultipartFile CVFile;
     @Lob
-    @Column(columnDefinition = "mediumblob")
+    @Column
     private byte[] cv;
     @Column
     private String cvFileName;
